@@ -8,17 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		8095F3732A56AA8E002715B8 /* NYTTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3722A56AA8E002715B8 /* NYTTestTaskApp.swift */; };
-		8095F3752A56AA8E002715B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3742A56AA8E002715B8 /* ContentView.swift */; };
+		8095F3752A56AA8E002715B8 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3742A56AA8E002715B8 /* CategoriesView.swift */; };
 		8095F3772A56AA8F002715B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8095F3762A56AA8F002715B8 /* Assets.xcassets */; };
 		8095F37A2A56AA8F002715B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8095F3792A56AA8F002715B8 /* Preview Assets.xcassets */; };
+		8095F3842A56AC31002715B8 /* CategoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3832A56AC31002715B8 /* CategoryItemView.swift */; };
+		8095F3872A56B177002715B8 /* NYTAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3862A56B177002715B8 /* NYTAPIService.swift */; };
+		8095F3892A56B272002715B8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3882A56B272002715B8 /* Category.swift */; };
+		8095F38B2A56B29A002715B8 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F38A2A56B29A002715B8 /* Book.swift */; };
+		8095F38E2A56B3F6002715B8 /* NYTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F38D2A56B3F6002715B8 /* NYTError.swift */; };
+		8095F3902A56BAFA002715B8 /* NYTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F38F2A56BAFA002715B8 /* NYTResponse.swift */; };
+		8095F3922A56BE6C002715B8 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3912A56BE6C002715B8 /* CategoriesViewModel.swift */; };
+		8095F3942A56BFC4002715B8 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3932A56BFC4002715B8 /* BooksViewModel.swift */; };
+		8095F3962A5710FC002715B8 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3952A5710FC002715B8 /* BooksView.swift */; };
+		8095F39C2A571E31002715B8 /* BookItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F39B2A571E31002715B8 /* BookItemView.swift */; };
+		8095F39E2A5720C4002715B8 /* BooksDeailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F39D2A5720C4002715B8 /* BooksDeailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8095F36F2A56AA8E002715B8 /* NYTTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8095F3722A56AA8E002715B8 /* NYTTestTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTestTaskApp.swift; sourceTree = "<group>"; };
-		8095F3742A56AA8E002715B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8095F3742A56AA8E002715B8 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		8095F3762A56AA8F002715B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8095F3792A56AA8F002715B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8095F3832A56AC31002715B8 /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
+		8095F3862A56B177002715B8 /* NYTAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTAPIService.swift; sourceTree = "<group>"; };
+		8095F3882A56B272002715B8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8095F38A2A56B29A002715B8 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		8095F38D2A56B3F6002715B8 /* NYTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTError.swift; sourceTree = "<group>"; };
+		8095F38F2A56BAFA002715B8 /* NYTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTResponse.swift; sourceTree = "<group>"; };
+		8095F3912A56BE6C002715B8 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		8095F3932A56BFC4002715B8 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		8095F3952A5710FC002715B8 /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		8095F39B2A571E31002715B8 /* BookItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemView.swift; sourceTree = "<group>"; };
+		8095F39D2A5720C4002715B8 /* BooksDeailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksDeailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +73,12 @@
 		8095F3712A56AA8E002715B8 /* NYTTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				8095F38C2A56B3E5002715B8 /* Utilities */,
+				8095F3852A56B161002715B8 /* Services */,
+				8095F3822A56AB8D002715B8 /* ViewModels */,
+				8095F3812A56AB8A002715B8 /* Views */,
+				8095F3802A56AB84002715B8 /* Models */,
 				8095F3722A56AA8E002715B8 /* NYTTestTaskApp.swift */,
-				8095F3742A56AA8E002715B8 /* ContentView.swift */,
 				8095F3762A56AA8F002715B8 /* Assets.xcassets */,
 				8095F3782A56AA8F002715B8 /* Preview Content */,
 			);
@@ -65,6 +91,69 @@
 				8095F3792A56AA8F002715B8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8095F3802A56AB84002715B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8095F3882A56B272002715B8 /* Category.swift */,
+				8095F38A2A56B29A002715B8 /* Book.swift */,
+				8095F38F2A56BAFA002715B8 /* NYTResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8095F3812A56AB8A002715B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8095F3982A571E08002715B8 /* Categories */,
+				8095F3972A571E04002715B8 /* Books */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8095F3822A56AB8D002715B8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8095F3912A56BE6C002715B8 /* CategoriesViewModel.swift */,
+				8095F3932A56BFC4002715B8 /* BooksViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8095F3852A56B161002715B8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8095F3862A56B177002715B8 /* NYTAPIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8095F38C2A56B3E5002715B8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8095F38D2A56B3F6002715B8 /* NYTError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8095F3972A571E04002715B8 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				8095F3952A5710FC002715B8 /* BooksView.swift */,
+				8095F39B2A571E31002715B8 /* BookItemView.swift */,
+				8095F39D2A5720C4002715B8 /* BooksDeailsView.swift */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
+		8095F3982A571E08002715B8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8095F3742A56AA8E002715B8 /* CategoriesView.swift */,
+				8095F3832A56AC31002715B8 /* CategoryItemView.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +226,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8095F3752A56AA8E002715B8 /* ContentView.swift in Sources */,
+				8095F3872A56B177002715B8 /* NYTAPIService.swift in Sources */,
+				8095F3892A56B272002715B8 /* Category.swift in Sources */,
+				8095F39C2A571E31002715B8 /* BookItemView.swift in Sources */,
+				8095F38B2A56B29A002715B8 /* Book.swift in Sources */,
+				8095F39E2A5720C4002715B8 /* BooksDeailsView.swift in Sources */,
+				8095F3962A5710FC002715B8 /* BooksView.swift in Sources */,
+				8095F3942A56BFC4002715B8 /* BooksViewModel.swift in Sources */,
+				8095F3842A56AC31002715B8 /* CategoryItemView.swift in Sources */,
+				8095F3752A56AA8E002715B8 /* CategoriesView.swift in Sources */,
+				8095F38E2A56B3F6002715B8 /* NYTError.swift in Sources */,
+				8095F3902A56BAFA002715B8 /* NYTResponse.swift in Sources */,
+				8095F3922A56BE6C002715B8 /* CategoriesViewModel.swift in Sources */,
 				8095F3732A56AA8E002715B8 /* NYTTestTaskApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -273,8 +373,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -282,9 +383,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nyttest.task.NYTTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,8 +406,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +416,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nyttest.task.NYTTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

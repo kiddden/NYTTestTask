@@ -11,7 +11,7 @@ import SwiftUI
 struct NYTTestTaskApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CategoriesView()
         }
     }
 }
