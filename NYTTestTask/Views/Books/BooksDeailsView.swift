@@ -19,16 +19,16 @@ struct BooksDeailsView: View {
     }
 }
 
-struct BooksDeailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        BooksDeailsView(for: Book(rank: 1,
-                                  rankLastWeek: 3,
-                                  publisher: "Published",
-                                  description: "Description",
-                                  price: "13.15",
-                                  title: "Title",
-                                  author: "Author Author",
-                                  image: "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
-                                  buyLinks: []))
-    }
-}
+//struct BooksDeailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BooksDeailsView(for: Book(rank: 1,
+//                                  rankLastWeek: 3,
+//                                  publisher: "Published",
+//                                  description: "Description",
+//                                  price: "13.15",
+//                                  title: "Title",
+//                                  author: "Author Author",
+//                                  image: "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
+//                                  buyLinks: []))
+//    }
+//}

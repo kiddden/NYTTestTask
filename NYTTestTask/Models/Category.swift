@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Category: Codable, Identifiable {
-    var id = UUID().uuidString
-    let name: String
-    let nameEncoded: String
-    let publishedDate: String
+final class Category: Object, ObjectKeyIdentifiable, Codable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var name: String
+    @Persisted var nameEncoded: String
+    @Persisted var publishedDate: String
     
     enum CodingKeys: String, CodingKey {
         case name = "display_name"

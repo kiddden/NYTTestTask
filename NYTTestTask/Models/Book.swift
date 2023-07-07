@@ -6,24 +6,27 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Book: Codable, Identifiable {
-    let id = UUID().uuidString
-    let rank: Int // TODO: rank change
-    let rankLastWeek: Int
-    let publisher: String
-    let description: String
-    let price: String
-    let title: String
-    let author: String
-    let image: String
-    let buyLinks: [BuyLink]
+final class Book: Object, ObjectKeyIdentifiable, Codable {
+    @Persisted(primaryKey: true) var id: String
+    @Persisted var categoryID: String
+    @Persisted var rank: Int // TODO: rank change
+    @Persisted var rankLastWeek: Int
+    @Persisted var publisher: String
+    @Persisted var bookDescription: String
+    @Persisted var price: String
+    @Persisted var title: String
+    @Persisted var author: String
+    @Persisted var image: String
+    @Persisted var buyLinks: RealmSwift.List<BuyLink>
     
     enum CodingKeys: String, CodingKey {
+        case id = "primary_isbn10"
         case rank
         case rankLastWeek = "rank_last_week"
         case publisher
-        case description
+        case bookDescription = "description"
         case price
         case title
         case author
@@ -32,7 +35,7 @@ struct Book: Codable, Identifiable {
     }
 }
 
-struct BuyLink: Codable {
-    let name: String
-    let url: String
+final class BuyLink: Object, ObjectKeyIdentifiable, Codable {
+    @Persisted var name: String
+    @Persisted var url: String
 }

@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
+import UIKit
 
 class NYTAPIService {
     
     static let shared = NYTAPIService()
+    
+    private let imageCache = ImageCache()
     
     private let baseURL = "https://api.nytimes.com/svc/books/v3/"
     private let APIKey = "h0Xuhy01G7MA8YlSUd9L5WhMoiySphvb"
@@ -37,12 +41,20 @@ class NYTAPIService {
                 completion(.failure(.invalidData))
                 return
             }
-            do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(TopLevelNYTResponse<[Category]>.self, from: data)
-                completion(.success(response.results))
-            } catch {
-                completion(.failure(.errorDecoding))
+            DispatchQueue.main.async {
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(TopLevelNYTResponse<[Category]>.self, from: data)
+                    
+                    let realm = try Realm()
+                    try realm.write {
+                        realm.add(response.results, update: .all)
+                    }
+                    
+                    completion(.success(response.results))
+                } catch {
+                    completion(.failure(.errorDecoding))
+                }
             }
             
         }
@@ -51,7 +63,6 @@ class NYTAPIService {
     
     func getBooks(for category: Category, completion: @escaping(Result<[Book], NYTError>) -> Void) {
         let endpoint = baseURL + "lists/\(category.publishedDate)/\(category.nameEncoded).json?api-key=\(APIKey)"
-        print(endpoint)
         
         guard let url = URL(string: endpoint) else {
             completion(.failure(.invalidEndpoint))
@@ -71,15 +82,44 @@ class NYTAPIService {
                 completion(.failure(.invalidData))
                 return
             }
-            do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(TopLevelNYTResponse<BottomLevelNYTResponse>.self, from: data)
-                completion(.success(response.results.books))
-            } catch {
-                completion(.failure(.errorDecoding))
+            DispatchQueue.main.async {
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(TopLevelNYTResponse<BottomLevelNYTResponse>.self, from: data)
+                    let books = response.results.books
+                    books.forEach { $0.categoryID = category._id.stringValue }
+                    
+                    let realm = try Realm()
+                    try realm.write {
+                        realm.add(books, update: .all)
+                    }
+                    for book in books {
+                        print("Saved book with categoryID: \(book.categoryID)")
+                    }
+                    
+                    completion(.success(books))
+                } catch {
+                    completion(.failure(.errorDecoding))
+                }
             }
             
         }
         task.resume()
+    }
+    
+    func downloadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
+        if let image = imageCache.image(for: url) {
+            completion(image)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                self.imageCache.cache(image: image, for: url)
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }.resume()
     }
 }

@@ -26,7 +26,7 @@ struct CategoriesView: View {
             DispatchQueue.main.async {
                 categoriesVM.fetchCategories { error in
                     if let error = error {
-                        
+                        print(error)
                     }
                 }
             }
@@ -62,7 +62,7 @@ struct CategoriesView: View {
             DispatchQueue.main.async {
                 self.categoriesVM.fetchCategories { error in
                     if let error = error {
-                        
+                        print(error)
                     }
                 }
             }

@@ -12,24 +12,33 @@ struct BookItemView: View {
     
     let book: Book
     
+    @State private var image: UIImage?
+    
     init(for book: Book) {
         self.book = book
     }
     
     var body: some View {
         HStack {
-//            AsyncImage(url: URL(string: book.image))
-//                .scaledToFill()
+            //            AsyncImage(url: URL(string: book.image))
+            //                .scaledToFill()
             
-            AsyncImage(url: URL(string: book.image),
-                       content: { image in
-                            image
-                                .resizable()
-                                .frame(minWidth: UIScreen.main.bounds.width/3, maxWidth: UIScreen.main.bounds.width/3, minHeight: UIScreen.main.bounds.height/6, maxHeight: UIScreen.main.bounds.height/6)
-                                .scaledToFit()
-                                
-            },
-                       placeholder: { ProgressView() })
+            //            AsyncImage(url: URL(string: book.image),
+            //                       content: { image in
+            //                image
+            //                    .resizable()
+            //                    .frame(minWidth: UIScreen.main.bounds.width/3, maxWidth: UIScreen.main.bounds.width/3, minHeight: UIScreen.main.bounds.height/6, maxHeight: UIScreen.main.bounds.height/6)
+            //                    .scaledToFit()
+            //
+            //            },
+            //                       placeholder: { ProgressView() })
+            
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(minWidth: UIScreen.main.bounds.width/3, maxWidth: UIScreen.main.bounds.width/3, minHeight: UIScreen.main.bounds.height/6, maxHeight: UIScreen.main.bounds.height/6)
+                    .scaledToFit()
+            }
             
             VStack(alignment: .leading) {
                 Text(book.title)
@@ -50,7 +59,7 @@ struct BookItemView: View {
                             .foregroundColor(.green)
                             .scaledToFit()
                             .frame(width: 14, height: 14)
-                            
+                        
                     } else {
                         Image(systemName: "chevron.down")
                             .resizable()
@@ -75,19 +84,24 @@ struct BookItemView: View {
         .padding(.horizontal, 12)
         .shadow(radius: 5, x: 0, y: 0)
         .foregroundColor(colorScheme == .dark ? .white : .black)
+        .onAppear {
+            NYTAPIService.shared.downloadImage(from: book.image) { downloadedImage in
+                self.image = downloadedImage
+            }
+        }
     }
 }
 
-struct BookItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookItemView(for: Book(rank: 1,
-                               rankLastWeek: 3,
-                               publisher: "Published",
-                               description: "Description",
-                               price: "13.15",
-                               title: "Title",
-                               author: "Author Author",
-                               image: "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
-                               buyLinks: []))
-    }
-}
+//struct BookItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookItemView(for: Book(rank: 1,
+//                               rankLastWeek: 3,
+//                               publisher: "Published",
+//                               description: "Description",
+//                               price: "13.15",
+//                               title: "Title",
+//                               author: "Author Author",
+//                               image: "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
+//                               buyLinks: []))
+//    }
+//}

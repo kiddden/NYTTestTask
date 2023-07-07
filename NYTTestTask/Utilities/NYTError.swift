@@ -13,4 +13,5 @@ enum NYTError: String, Error {
     case invalidResponse = "Invalid response from the server. Please try again."
     case invalidData = "The data received from the server is invalid. Please try again."
     case errorDecoding = "Decoding error"
+    case errorRetreivingCache = "Error while loading from cache"
 }

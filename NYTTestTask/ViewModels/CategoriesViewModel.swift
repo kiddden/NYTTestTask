@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class CategoriesViewModel: ObservableObject {
     
@@ -13,20 +14,31 @@ class CategoriesViewModel: ObservableObject {
     
     @Published private(set) var categories: [Category] = []
     
-    private(set) var isLoading: Bool = false
+    @Published private(set) var isLoading: Bool = false
     
     func fetchCategories(completion: @escaping (NYTError?) -> Void) {
         self.isLoading = true
         apiService.getCategories { result in
-            switch result {
-            case .success(let categories):
-                self.categories = categories
-                self.isLoading = false
-                completion(nil)
-            case .failure(let error):
-                self.isLoading = false
-                completion(error)
-            }
+                switch result {
+                case .success(let categories):
+                    self.categories = categories
+                    self.isLoading = false
+                    completion(nil)
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        do {
+                            let realm = try Realm()
+                            let cachedCategories = Array(realm.objects(Category.self))
+                            self.categories = cachedCategories
+                            
+                            completion(nil)
+                        } catch {
+                            completion(.errorRetreivingCache)
+                        }
+                    }
+                }
+            
         }
     }
 }
