@@ -15,6 +15,11 @@ struct CategoriesView: View {
             VStack {
                 if isLoading {
                     loaderView
+                } else if categoriesVM.categories.isEmpty {
+                        Text(L10n.Categories.noCategoryFound)
+                            .font(.title3)
+                            .multilineTextAlignment(.center)
+                            .padding()
                 } else {
                     categoriesListView
                 }
@@ -41,24 +46,19 @@ struct CategoriesView: View {
             .tint(.blue)
     }
     
-    @State private var isLoading = false
+    @State private var isLoading = true
     
     private var categoriesListView: some View {
         ScrollView {
+            VStack {
                 ForEach(categoriesVM.categories, id: \.id) { category in
-                    if categoriesVM.categories.isEmpty {
-                        Text(L10n.Categories.noCategoryFound)
-                            .font(.title3)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                    } else {
-                        NavigationLink {
-                            BooksView(for: category)
-                        } label: {
-                            CategoryItemView(name: category.name, date: category.publishedDate)
-                        }
+                    NavigationLink {
+                        BooksView(for: category)
+                    } label: {
+                        CategoryItemView(name: category.name, date: category.publishedDate)
                     }
                 }
+            }
         }
         .background(Color(.secondarySystemBackground))
         .refreshable {

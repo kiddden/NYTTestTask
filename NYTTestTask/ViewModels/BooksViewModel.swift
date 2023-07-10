@@ -30,7 +30,6 @@ class BooksViewModel: ObservableObject {
                         do {
                             let realm = try Realm()
                             
-                            let allBooks = Array(realm.objects(Book.self))
                             let objectId = try ObjectId(string: category._id.stringValue)
                             let cachedBooks = Array(realm.objects(Book.self).filter("categoryID == %@", objectId.stringValue))
                             self.books = cachedBooks

@@ -15,11 +15,7 @@ struct NYTTestTaskApp: SwiftUI.App {
             schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 3 {
-//                    migration.enumerateObjects(ofType: Book.className()) { oldObject, newObject in
-//                        if let oldID = oldObject!["_id"] as? ObjectId {
-//                            newObject!["id"] = oldID.stringValue // Convert ObjectId to String
-//                        }
-//                    }
+
                 }
             }
         )

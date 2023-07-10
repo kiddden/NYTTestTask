@@ -10,11 +10,11 @@ import SwiftUI
 struct BooksDeailsView: View {
     @Environment(\.presentationMode) private var presentationMode
     
-    let book: Book
+    @Binding var book: Book
     @State private var buyLink: BuyLink?
     
-    init(for book: Book) {
-        self.book = book
+    init(for book: Binding<Book>) {
+        self._book = book
     }
     
     var body: some View {

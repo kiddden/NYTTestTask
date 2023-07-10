@@ -45,13 +45,17 @@ class NYTAPIService {
                 do {
                     let decoder = JSONDecoder()
                     let response = try decoder.decode(TopLevelNYTResponse<[Category]>.self, from: data)
+                    let categories = response.results.compactMap {
+                        try? $0._id = ObjectId(string: $0.nameEncoded)
+                        return $0
+                    }
                     
                     let realm = try Realm()
                     try realm.write {
-                        realm.add(response.results, update: .all)
+                        realm.add(categories, update: .all)
                     }
                     
-                    completion(.success(response.results))
+                    completion(.success(categories))
                 } catch {
                     completion(.failure(.errorDecoding))
                 }

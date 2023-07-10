@@ -12,13 +12,10 @@ struct BookItemView: View {
     
     let book: Book
     
-    let action: (Book) -> ()
-    
     @State private var image: UIImage?
     
-    init(for book: Book, action: @escaping (Book) -> ()) {
+    init(for book: Book) {
         self.book = book
-        self.action = action
     }
     
     var body: some View {
@@ -49,9 +46,6 @@ struct BookItemView: View {
             NYTAPIService.shared.downloadImage(from: book.image) { downloadedImage in
                 self.image = downloadedImage
             }
-        }
-        .onTapGesture {
-            action(book)
         }
     }
     
