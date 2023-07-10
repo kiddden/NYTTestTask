@@ -13,19 +13,22 @@ struct CategoriesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if categoriesVM.isLoading {
+                if isLoading {
                     loaderView
                 } else {
                     categoriesListView
                 }
             }
-            .navigationTitle("NYT Categories")
+            .navigationTitle(L10n.Categories.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
             DispatchQueue.main.async {
+                withAnimation { self.isLoading = true }
                 categoriesVM.fetchCategories { error in
+                    withAnimation { self.isLoading = false }
                     if let error = error {
+                        
                         print(error)
                     }
                 }
@@ -38,12 +41,13 @@ struct CategoriesView: View {
             .tint(.blue)
     }
     
+    @State private var isLoading = false
+    
     private var categoriesListView: some View {
         ScrollView {
-            VStack(spacing: 12) {
                 ForEach(categoriesVM.categories, id: \.id) { category in
                     if categoriesVM.categories.isEmpty {
-                        Text("No category found, check your internet connection and try again!")
+                        Text(L10n.Categories.noCategoryFound)
                             .font(.title3)
                             .multilineTextAlignment(.center)
                             .padding()
@@ -55,7 +59,6 @@ struct CategoriesView: View {
                         }
                     }
                 }
-            }
         }
         .background(Color(.secondarySystemBackground))
         .refreshable {

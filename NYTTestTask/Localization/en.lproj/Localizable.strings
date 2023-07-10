@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  NYTTestTask
+
+  Created by Eugene Ned on 09.07.2023.
+  
+*/
+
+// MARK: Categories
+
+"categories.navigation-title" = "NYT Categories";
+
+"categories.published-date" = "published date:";
+
+"categories.no-category-found" = "No category found, check your internet connection and try again!";
+
+// MARK: Books
+
+"books.buy-links" = "Buy Links";
+
+"books.no-buy-link-found" = "Unfortunately, no option to buy this book found";
+
+"books.buy-button" = "Buy";
+
+"books.no-book-found" = "No book found, check your internet connection and try again!";
+
+"books.author-prefix" = "Author: ";
+
+"books.publisher-prefix" = "Publisher: ";
+
+

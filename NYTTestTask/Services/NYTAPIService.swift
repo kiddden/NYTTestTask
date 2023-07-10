@@ -93,9 +93,6 @@ class NYTAPIService {
                     try realm.write {
                         realm.add(books, update: .all)
                     }
-                    for book in books {
-                        print("Saved book with categoryID: \(book.categoryID)")
-                    }
                     
                     completion(.success(books))
                 } catch {

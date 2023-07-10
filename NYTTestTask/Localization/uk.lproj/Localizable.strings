@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  NYTTestTask
+
+  Created by Eugene Ned on 09.07.2023.
+  
+*/
+
+// MARK: Categories
+
+"categories.navigation-title" = "NYT Категорії";
+
+"categories.published-date" = "дата публікації:";
+
+"categories.no-category-found" = "Не вдалось завантажити категорії, перевірте пікдлючення до інтеренету та спробуйте знову!";
+
+// MARK: Books
+
+"books.buy-links" = "Де придбати";
+
+"books.no-buy-link-found" = "На жаль, не вдалось знайти ні одного посилання де можна придбати цю книгу";
+
+"books.buy-button" = "Купити";
+
+"books.no-book-found" = "Не вдалось завантажити книги, перевірте пікдлючення до інтеренету та спробуйте знову!";
+
+"books.author-prefix" = "Автор: ";
+
+"books.publisher-prefix" = "Видавництво: ";

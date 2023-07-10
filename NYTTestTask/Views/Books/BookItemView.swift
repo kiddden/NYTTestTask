@@ -12,76 +12,37 @@ struct BookItemView: View {
     
     let book: Book
     
+    let action: (Book) -> ()
+    
     @State private var image: UIImage?
     
-    init(for book: Book) {
+    init(for book: Book, action: @escaping (Book) -> ()) {
         self.book = book
+        self.action = action
     }
     
     var body: some View {
-        HStack {
-            //            AsyncImage(url: URL(string: book.image))
-            //                .scaledToFill()
-            
-            //            AsyncImage(url: URL(string: book.image),
-            //                       content: { image in
-            //                image
-            //                    .resizable()
-            //                    .frame(minWidth: UIScreen.main.bounds.width/3, maxWidth: UIScreen.main.bounds.width/3, minHeight: UIScreen.main.bounds.height/6, maxHeight: UIScreen.main.bounds.height/6)
-            //                    .scaledToFit()
-            //
-            //            },
-            //                       placeholder: { ProgressView() })
-            
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(minWidth: UIScreen.main.bounds.width/3, maxWidth: UIScreen.main.bounds.width/3, minHeight: UIScreen.main.bounds.height/6, maxHeight: UIScreen.main.bounds.height/6)
-                    .scaledToFit()
-            }
-            
-            VStack(alignment: .leading) {
-                Text(book.title)
-                    .multilineTextAlignment(.leading)
-                    .font(.headline)
-                Text("by \(book.author)")
-                    .multilineTextAlignment(.leading)
-                    .font(.subheadline)
-            }
-            Spacer()
-            VStack(alignment: .trailing) {
-                HStack(spacing: 6) {
-                    Text(String(book.rank))
-                        .font(.title3)
-                    if book.rank >= book.rankLastWeek {
-                        Image(systemName: "chevron.up")
-                            .resizable()
-                            .foregroundColor(.green)
-                            .scaledToFit()
-                            .frame(width: 14, height: 14)
-                        
-                    } else {
-                        Image(systemName: "chevron.down")
-                            .resizable()
-                            .foregroundColor(.red)
-                            .scaledToFit()
-                            .frame(width: 14, height: 14)
-                    }
+        HStack(spacing: 0) {
+            bookImageView
+            VStack {
+                HStack {
+                    bookInfoView
+                    Spacer()
+                    rankView
                 }
-                .padding(6)
-                .background(Color(.systemGray5))
-                .cornerRadius(10)
-                .padding(6)
+                Divider()
+                Text(book.bookDescription)
+                    .multilineTextAlignment(.leading)
+                    .font(.footnote)
                 
                 Spacer()
             }
-            .font(.footnote)
-            
+            .padding(Constants.Sizes.padding)
         }
-        .frame(minHeight: UIScreen.main.bounds.height/6, maxHeight: UIScreen.main.bounds.height/6)
+        .frame(minHeight: Constants.Sizes.cardMinHeight, maxHeight: Constants.Sizes.cardMaxHeight)
         .background(.ultraThinMaterial)
-        .cornerRadius(10)
-        .padding(.horizontal, 12)
+        .cornerRadius(Constants.Sizes.cornerRadius)
+        .padding(.horizontal, Constants.Sizes.padding*2)
         .shadow(radius: 5, x: 0, y: 0)
         .foregroundColor(colorScheme == .dark ? .white : .black)
         .onAppear {
@@ -89,19 +50,80 @@ struct BookItemView: View {
                 self.image = downloadedImage
             }
         }
+        .onTapGesture {
+            action(book)
+        }
+    }
+    
+    @ViewBuilder
+    private var bookImageView: some View {
+        if let image = image {
+            Image(uiImage: image)
+                .resizable()
+                .frame(minWidth: Constants.Sizes.bookImageWidth,
+                       maxWidth: Constants.Sizes.bookImageWidth,
+                       minHeight: Constants.Sizes.bookImageHeight,
+                       maxHeight: Constants.Sizes.bookImageHeight)
+                .scaledToFit()
+                .cornerRadius(Constants.Sizes.cornerRadius)
+        } else {
+            ProgressView()
+                .frame(minWidth: Constants.Sizes.bookImageWidth,
+                       maxWidth: Constants.Sizes.bookImageWidth,
+                       minHeight: Constants.Sizes.bookImageHeight,
+                       maxHeight: Constants.Sizes.bookImageHeight)
+        }
+    }
+    
+    private var bookInfoView: some View {
+        VStack(alignment: .leading) {
+            Text(book.title)
+                .multilineTextAlignment(.leading)
+                .font(.headline)
+            
+            Text(L10n.Books.authorPrefix) + Text(book.author)
+            
+            Text(L10n.Books.publisherPrefix) + Text(book.publisher)
+        }
+        .multilineTextAlignment(.leading)
+        .font(.subheadline)
+    }
+    
+    private var rankView: some View {
+        VStack {
+            HStack(spacing: Constants.Sizes.padding) {
+                Text(String(book.rank))
+                    .font(.title3)
+                Image(systemName: book.rank >= book.rankLastWeek ? Constants.Images.chevronUp : Constants.Images.chevronDown)
+                    .resizable()
+                    .foregroundColor(book.rank >= book.rankLastWeek ? .green : .red)
+                    .scaledToFit()
+                    .frame(width: Constants.Sizes.chevronSize, height: Constants.Sizes.chevronSize)
+            }
+            .padding(Constants.Sizes.padding)
+            .background(Color(.systemGray4))
+            .cornerRadius(Constants.Sizes.cornerRadius)
+            .padding(Constants.Sizes.padding)
+            
+            Spacer()
+        }
+    }
+    
+    // MARK: - Constants
+    enum Constants {
+        enum Sizes {
+            static let cardMinHeight: CGFloat = UIScreen.main.bounds.height/5
+            static let cardMaxHeight: CGFloat = UIScreen.main.bounds.height/5
+            static let cornerRadius: CGFloat = 10
+            static let chevronSize: CGFloat = 14
+            static let padding: CGFloat = 6
+            static let bookImageWidth: CGFloat = UIScreen.main.bounds.width/3
+            static let bookImageHeight: CGFloat = UIScreen.main.bounds.height/5
+        }
+        
+        enum Images {
+            static let chevronUp = "chevron.up"
+            static let chevronDown = "chevron.down"
+        }
     }
 }
-
-//struct BookItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookItemView(for: Book(rank: 1,
-//                               rankLastWeek: 3,
-//                               publisher: "Published",
-//                               description: "Description",
-//                               price: "13.15",
-//                               title: "Title",
-//                               author: "Author Author",
-//                               image: "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
-//                               buyLinks: []))
-//    }
-//}

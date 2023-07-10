@@ -22,7 +22,7 @@ final class Book: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var buyLinks: RealmSwift.List<BuyLink>
     
     enum CodingKeys: String, CodingKey {
-        case id = "primary_isbn10"
+        case id = "primary_isbn13"
         case rank
         case rankLastWeek = "rank_last_week"
         case publisher

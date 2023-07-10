@@ -8,27 +8,53 @@
 import SwiftUI
 
 struct BooksDeailsView: View {
+    @Environment(\.presentationMode) private var presentationMode
+    
     let book: Book
+    @State private var buyLink: BuyLink?
     
     init(for book: Book) {
         self.book = book
     }
     
     var body: some View {
-        Text("BooksDeailsView")
+        NavigationView {
+            VStack {
+                if let link = buyLink {
+                    BuyLinkWebView(url: link.url)
+                        .navigationTitle(link.name)
+                } else {
+                    ScrollView {
+                        if book.buyLinks.isEmpty {
+                            Text(L10n.Books.noBuyLinkFound)
+                                .font(.title3)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        } else {
+                            ForEach(book.buyLinks, id:\.self) { link in
+                                BuyLinkItem(for: link) { buyLink in
+                                    self.buyLink = buyLink
+                                }
+                            }
+                        }
+                    }
+                    .navigationTitle(L10n.Books.buyLinks)
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    cancelButton
+                }
+            }
+        }
+    }
+    
+    private var cancelButton: Button<Text> {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Cancel")
+        }
     }
 }
-
-//struct BooksDeailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BooksDeailsView(for: Book(rank: 1,
-//                                  rankLastWeek: 3,
-//                                  publisher: "Published",
-//                                  description: "Description",
-//                                  price: "13.15",
-//                                  title: "Title",
-//                                  author: "Author Author",
-//                                  image: "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
-//                                  buyLinks: []))
-//    }
-//}

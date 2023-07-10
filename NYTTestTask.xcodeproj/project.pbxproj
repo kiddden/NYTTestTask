@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80665F5A2A5AFB09002DFEBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80665F5C2A5AFB09002DFEBB /* Localizable.strings */; };
 		8095F3732A56AA8E002715B8 /* NYTTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3722A56AA8E002715B8 /* NYTTestTaskApp.swift */; };
 		8095F3752A56AA8E002715B8 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3742A56AA8E002715B8 /* CategoriesView.swift */; };
 		8095F3772A56AA8F002715B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8095F3762A56AA8F002715B8 /* Assets.xcassets */; };
@@ -25,9 +26,14 @@
 		8095F3A12A580448002715B8 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8095F3A02A580448002715B8 /* Realm */; };
 		8095F3A32A580448002715B8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8095F3A22A580448002715B8 /* RealmSwift */; };
 		8095F3A52A584DF7002715B8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095F3A42A584DF7002715B8 /* ImageCache.swift */; };
+		80D8664D2A5C4147002AF2F1 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D8664C2A5C4147002AF2F1 /* L10n.swift */; };
+		80D866522A5C5058002AF2F1 /* BuyLinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D866512A5C5058002AF2F1 /* BuyLinkItem.swift */; };
+		80D866542A5C5A2C002AF2F1 /* BuyLinkWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D866532A5C5A2C002AF2F1 /* BuyLinkWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80665F5B2A5AFB09002DFEBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80665F5D2A5AFB0E002DFEBB /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8095F36F2A56AA8E002715B8 /* NYTTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8095F3722A56AA8E002715B8 /* NYTTestTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTestTaskApp.swift; sourceTree = "<group>"; };
 		8095F3742A56AA8E002715B8 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -45,6 +51,9 @@
 		8095F39B2A571E31002715B8 /* BookItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemView.swift; sourceTree = "<group>"; };
 		8095F39D2A5720C4002715B8 /* BooksDeailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksDeailsView.swift; sourceTree = "<group>"; };
 		8095F3A42A584DF7002715B8 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		80D8664C2A5C4147002AF2F1 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		80D866512A5C5058002AF2F1 /* BuyLinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyLinkItem.swift; sourceTree = "<group>"; };
+		80D866532A5C5A2C002AF2F1 /* BuyLinkWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyLinkWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80665F512A5AF946002DFEBB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				80665F5C2A5AFB09002DFEBB /* Localizable.strings */,
+				80D8664C2A5C4147002AF2F1 /* L10n.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		8095F3662A56AA8E002715B8 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +97,7 @@
 		8095F3712A56AA8E002715B8 /* NYTTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				80665F512A5AF946002DFEBB /* Localization */,
 				8095F38C2A56B3E5002715B8 /* Utilities */,
 				8095F3852A56B161002715B8 /* Services */,
 				8095F3822A56AB8D002715B8 /* ViewModels */,
@@ -150,6 +169,8 @@
 				8095F3952A5710FC002715B8 /* BooksView.swift */,
 				8095F39B2A571E31002715B8 /* BookItemView.swift */,
 				8095F39D2A5720C4002715B8 /* BooksDeailsView.swift */,
+				80D866512A5C5058002AF2F1 /* BuyLinkItem.swift */,
+				80D866532A5C5A2C002AF2F1 /* BuyLinkWebView.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -209,6 +230,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = 8095F3662A56AA8E002715B8;
 			packageReferences = (
@@ -229,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8095F37A2A56AA8F002715B8 /* Preview Assets.xcassets in Resources */,
+				80665F5A2A5AFB09002DFEBB /* Localizable.strings in Resources */,
 				8095F3772A56AA8F002715B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,15 +272,30 @@
 				8095F3942A56BFC4002715B8 /* BooksViewModel.swift in Sources */,
 				8095F3842A56AC31002715B8 /* CategoryItemView.swift in Sources */,
 				8095F3752A56AA8E002715B8 /* CategoriesView.swift in Sources */,
+				80D866522A5C5058002AF2F1 /* BuyLinkItem.swift in Sources */,
 				8095F38E2A56B3F6002715B8 /* NYTError.swift in Sources */,
+				80D866542A5C5A2C002AF2F1 /* BuyLinkWebView.swift in Sources */,
 				8095F3902A56BAFA002715B8 /* NYTResponse.swift in Sources */,
 				8095F3922A56BE6C002715B8 /* CategoriesViewModel.swift in Sources */,
 				8095F3A52A584DF7002715B8 /* ImageCache.swift in Sources */,
 				8095F3732A56AA8E002715B8 /* NYTTestTaskApp.swift in Sources */,
+				80D8664D2A5C4147002AF2F1 /* L10n.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		80665F5C2A5AFB09002DFEBB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80665F5B2A5AFB09002DFEBB /* en */,
+				80665F5D2A5AFB0E002DFEBB /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8095F37B2A56AA8F002715B8 /* Debug */ = {

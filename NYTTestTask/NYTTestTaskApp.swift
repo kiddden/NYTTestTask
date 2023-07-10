@@ -11,26 +11,27 @@ import RealmSwift
 @main
 struct NYTTestTaskApp: SwiftUI.App {
     init() {
-            // Migration
-            let config = Realm.Configuration(
-                schemaVersion: 1,
-                migrationBlock: { migration, oldSchemaVersion in
-                    if oldSchemaVersion < 1 {
-                        // Nothing to do!
-                    }
+        let config = Realm.Configuration(
+            schemaVersion: 3,
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 3 {
+//                    migration.enumerateObjects(ofType: Book.className()) { oldObject, newObject in
+//                        if let oldID = oldObject!["_id"] as? ObjectId {
+//                            newObject!["id"] = oldID.stringValue // Convert ObjectId to String
+//                        }
+//                    }
                 }
-            )
-
-            // Set the configuration
-            Realm.Configuration.defaultConfiguration = config
-
-            // Try to open the Realm
-            do {
-                _ = try Realm()
-            } catch {
-                print("Error initializing Realm: \(error)")
             }
+        )
+        
+        Realm.Configuration.defaultConfiguration = config
+        
+        do {
+            let realm = try Realm()
+        } catch {
+            print("Error initializing Realm: \(error)")
         }
+    }
     
     var body: some Scene {
         WindowGroup {

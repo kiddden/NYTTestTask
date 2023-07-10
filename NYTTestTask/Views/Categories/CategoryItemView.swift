@@ -20,7 +20,7 @@ struct CategoryItemView: View {
                 .font(.callout)
             Spacer()
             VStack(alignment: .trailing) {
-                Text("published date:")
+                Text(L10n.Categories.publishedDate)
                 Text(date)
             }
             .font(.footnote)

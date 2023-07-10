@@ -18,7 +18,7 @@ struct BooksView: View {
     
     var body: some View {
         VStack {
-            if booksVM.isLoading {
+            if isLoading {
                 loaderView
             } else {
                 booksListView
@@ -28,7 +28,9 @@ struct BooksView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             DispatchQueue.main.async {
+                withAnimation { self.isLoading = true }
                 booksVM.fetchBooks(for: category) { error in
+                    withAnimation { self.isLoading = false }
                     if let error = error {
                         print(error)
                     }
@@ -46,6 +48,8 @@ struct BooksView: View {
         ProgressView().scaleEffect(2)
             .tint(.blue)
     }
+    
+    @State private var isLoading = false
     @State private var showBookDetailsView = false
     @State private var book: Book?
     
@@ -54,16 +58,15 @@ struct BooksView: View {
             VStack(spacing: 12) {
                 ForEach(booksVM.books, id: \.id) { book in
                     if booksVM.books.isEmpty {
-                        Text("No category found, check your internet connection and try again!")
+                        Text(L10n.Books.noBookFound)
                             .font(.title3)
                             .multilineTextAlignment(.center)
                             .padding()
                     } else {
-                        BookItemView(for: book)
-                            .onTapGesture {
-                                self.book = book
-                                showBookDetailsView = true
-                            }
+                        BookItemView(for: book) { book in
+                            self.book = book
+                            withAnimation { showBookDetailsView = true }
+                        }
                     }
                 }
             }

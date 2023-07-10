@@ -14,19 +14,17 @@ class CategoriesViewModel: ObservableObject {
     
     @Published private(set) var categories: [Category] = []
     
-    @Published private(set) var isLoading: Bool = false
-    
     func fetchCategories(completion: @escaping (NYTError?) -> Void) {
-        self.isLoading = true
         apiService.getCategories { result in
-                switch result {
-                case .success(let categories):
+            switch result {
+            case .success(let categories):
+                DispatchQueue.main.async {
                     self.categories = categories
-                    self.isLoading = false
-                    completion(nil)
-                case .failure:
+                }
+                completion(nil)
+            case .failure(let error):
+                if self.categories.isEmpty {
                     DispatchQueue.main.async {
-                        self.isLoading = false
                         do {
                             let realm = try Realm()
                             let cachedCategories = Array(realm.objects(Category.self))
@@ -37,8 +35,10 @@ class CategoriesViewModel: ObservableObject {
                             completion(.errorRetreivingCache)
                         }
                     }
+                } else {
+                    completion(error)
                 }
-            
+            }
         }
     }
 }
